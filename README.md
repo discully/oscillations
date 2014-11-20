@@ -1,6 +1,6 @@
 # oscillations
 
-Calculate neutrino oscillation probabilities easily
+Calculate neutrino oscillation probabilities easily.
 
 ## Example
 
@@ -31,3 +31,10 @@ includes the code used to generate all the [oscillations plots in my PhD
 thesis](http://danielscully.co.uk/thesis/neutrinos.html#section-oscillation-measurment).
 
 To run plots.py, you will need to have PyROOT installed and loaded.
+
+## Physics
+
+The module uses the standard PMNS matrix calculation for neutrino oscillations
+in a vacuum.
+
+Neither matter effects nor sterile neutrinos are currently included.

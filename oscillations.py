@@ -1,3 +1,21 @@
+"""
+Module for Calculating neutrino oscillation probabilities easily.
+
+class Oscillations is the primary interface, which allows you to set the
+various parameters and calculate oscillation probabilities.
+
+The 'units' object provides pre-defined constants to ensure parameters
+provided to Oscillations are in the correct units.
+
+An enumeration of the 6 neutrino/anti-neutrino flavours is provided in
+the form of nu_e, nu_mu, nu_tau, nu_e_bar, nu_mu_bar and nu_tau_bar.
+
+For convenience, groups of those enumerations (neutrinos and anti_neutrinos)
+are provided, as are some functions (isNeutrino() and isAntiNeutrino())for
+testing them.
+"""
+
+
 import math
 import cmath
 
@@ -110,103 +128,103 @@ class Oscillations:
 	
 	
 	def lOverE(self):
-		"""Return the value of L/E [km/GeV]."""
+		"""Return the value of L/E."""
 		if( self.E > 0.0 ):
-			return (self.L/units.km) / (self.E/units.GeV)
+			return (self.L / self.E)
 		else:
 			return 0.0
 	
 	
-	def setE(self, energy_GeV):
-		"""Set the neutrino energy [GeV].
+	def setE(self, energy):
+		"""Set the neutrino energy.
 		
-		Raises TypeError if energy_GeV cannot be converted to a float.
-		Raises ValueError if energy_GeV is negative.
+		Raises TypeError if energy cannot be converted to a float.
+		Raises ValueError if energy is negative.
 		"""
-		energy_GeV = float(energ_GeV) * units.GeV
-		if( energy_GeV < 0.0 ):
+		energy = float(energy) * units.GeV
+		if( energy < 0.0 ):
 			raise ValueError("Neutrino energy must be positive.")
-		self.E = energy_GeV
+		self.E = energy
 	
 	
-	def setL(self, baseline_km):
-		"""Set the oscillation baseline [km].
+	def setL(self, baseline):
+		"""Set the oscillation baseline.
 		
-		Raises TypeError if baseline_km cannot be converted to a float.
-		Raises ValueError if baseline_km is negative.
+		Raises TypeError if baseline cannot be converted to a float.
+		Raises ValueError if baseline is negative.
 		"""
-		baseline_km = float(baseline_km) * units.km
-		if( baseline_km < 0.0 ):
+		baseline = float(baseline)
+		if( baseline < 0.0 ):
 			raise ValueError("Oscillation baseline must be positive.")
-		self.L = baseline_km
+		self.L = baseline
 	
 	
 	def setLOverE(self, l_over_e):
-		"""Overrides the current L and E to set the ratio L/E [km/GeV].
+		"""Overrides the current L and E to set the ratio L/E.
 		
 		No guarantees are made about what L or E will be set to in order to achieve this.
 		Raises TypeError if l_over_e cannot be converted to a float.
 		Raises ValueError if l_over_e is negative.
 		"""
-		l_over_e = float(l_over_e) * units.km_GeV
+		l_over_e = float(l_over_e)
 		if( l_over_e < 0.0 ):
 			raise ValueError("L/E must be positive.")
 		self.L = self.E * l_over_e
 	
 	
-	def setDeltaM32(self, dm2_eV2):
-		"""Set the neutrino mass-squared difference (Delta m^2)_32 [eV^2].
+	def setDeltaM32(self, dm2):
+		"""Set the neutrino mass-squared difference (Delta m^2)_32.
 		
 		(Delta m^2)_32 = (m_3)^2 - (m_2)^2
-		Raises TypeError if dm2_eV2 cannot be converted to a float.
+		Raises TypeError if dm2 cannot be converted to a float.
 		"""
-		self.delta_m2_32 = float(dm2_eV2) * units.eV2
+		self.delta_m2_32 = float(dm2)
 		self._updateMasses()
 	
 	
-	def setDeltaM21(self, dm2_eV2):
-		"""Set the neutrino mass-squared difference (Delta m^2)_21 [eV^2].
+	def setDeltaM21(self, dm2):
+		"""Set the neutrino mass-squared difference (Delta m^2)_21.
 		
 		(Delta m^2)_21 = (m_2)^2 - (m_1)^2
-		Raises TypeError if dm2_eV2 cannot be converted to a float.
+		Raises TypeError if dm2 cannot be converted to a float.
 		"""
-		self.delta_m2_21 = float(dm2_eV2) * units.eV2
+		self.delta_m2_21 = float(dm2)
 		self._updateMasses()
 	
 	
-	def setTheta12(self, theta_radians):
-		"""Set the PMNS mixing angle theta_12 [radians].
+	def setTheta12(self, theta):
+		"""Set the PMNS mixing angle theta_12.
 		
 		Raises TypeError is theta_radians cannot be converted to a float.
 		"""
-		self.theta_12 = float(theta_radians) * units.radians
+		self.theta_12 = float(theta)
 		self._updateMatrix()
 	
 	
-	def setTheta23(self, theta_radians):
-		"""Set the PMNS mixing angle theta_23 [radians].
+	def setTheta23(self, theta):
+		"""Set the PMNS mixing angle theta_23.
 		
-		Raises TypeError is theta_radians cannot be converted to a float.
+		Raises TypeError is theta cannot be converted to a float.
 		"""
-		self.theta_23 = float(theta_radians) * units.radians
+		self.theta_23 = float(theta)
 		self._updateMatrix()
 	
 	
-	def setTheta13(self, theta_radians):
-		"""Set the PMNS mixing angle theta_13 [radians].
+	def setTheta13(self, theta):
+		"""Set the PMNS mixing angle theta_13.
 		
-		Raises TypeError is theta_radians cannot be converted to a float.
+		Raises TypeError is theta cannot be converted to a float.
 		"""
-		self.theta_13 = float(theta_radians) * units.radians
+		self.theta_13 = float(theta)
 		self._updateMatrix()
 	
 	
-	def setDeltaCP(self, delta_radians):
-		"""Set the PMNS CP-violating phase delta_cp [radians].
+	def setDeltaCP(self, delta):
+		"""Set the PMNS CP-violating phase delta_cp.
 		
-		Raises TypeError is delta_radians cannot be converted to a float.
+		Raises TypeError is delta cannot be converted to a float.
 		"""
-		self.delta_cp = float(delta_radians) * units.radians
+		self.delta_cp = float(delta)
 		self._updateMatrix()
 	
 	
@@ -284,7 +302,7 @@ class Oscillations:
 		# Oscillations with E = 0 or don't really make sense,
 		# but if you're plotting graphs these are the values you'll want.
 		if( E == 0.0 or L == 0.0 ):
-			if( a == b ):
+			if( initial == final ):
 				return 1.0
 			else:
 				return 0.0

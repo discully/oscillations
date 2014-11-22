@@ -38,3 +38,7 @@ The module uses the standard PMNS matrix calculation for neutrino oscillations
 in a vacuum.
 
 Neither matter effects nor sterile neutrinos are currently included.
+
+## Unit Tests
+
+Some basic unit testing is conducted in test.py, which uses Python's unittest module (PyUnit).

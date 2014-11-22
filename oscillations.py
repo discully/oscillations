@@ -138,7 +138,7 @@ class Oscillations:
 	def setE(self, energy):
 		"""Set the neutrino energy.
 		
-		Raises TypeError if energy cannot be converted to a float.
+		Raises ValueError if energy cannot be converted to a float.
 		Raises ValueError if energy is negative.
 		"""
 		energy = float(energy) * units.GeV
@@ -150,7 +150,7 @@ class Oscillations:
 	def setL(self, baseline):
 		"""Set the oscillation baseline.
 		
-		Raises TypeError if baseline cannot be converted to a float.
+		Raises ValueError if baseline cannot be converted to a float.
 		Raises ValueError if baseline is negative.
 		"""
 		baseline = float(baseline)
@@ -163,7 +163,7 @@ class Oscillations:
 		"""Overrides the current L and E to set the ratio L/E.
 		
 		No guarantees are made about what L or E will be set to in order to achieve this.
-		Raises TypeError if l_over_e cannot be converted to a float.
+		Raises ValueError if l_over_e cannot be converted to a float.
 		Raises ValueError if l_over_e is negative.
 		"""
 		l_over_e = float(l_over_e)
@@ -176,7 +176,7 @@ class Oscillations:
 		"""Set the neutrino mass-squared difference (Delta m^2)_32.
 		
 		(Delta m^2)_32 = (m_3)^2 - (m_2)^2
-		Raises TypeError if dm2 cannot be converted to a float.
+		Raises ValueError if dm2 cannot be converted to a float.
 		"""
 		self.delta_m2_32 = float(dm2)
 		self._updateMasses()
@@ -186,7 +186,7 @@ class Oscillations:
 		"""Set the neutrino mass-squared difference (Delta m^2)_21.
 		
 		(Delta m^2)_21 = (m_2)^2 - (m_1)^2
-		Raises TypeError if dm2 cannot be converted to a float.
+		Raises ValueError if dm2 cannot be converted to a float.
 		"""
 		self.delta_m2_21 = float(dm2)
 		self._updateMasses()
@@ -195,7 +195,7 @@ class Oscillations:
 	def setTheta12(self, theta):
 		"""Set the PMNS mixing angle theta_12.
 		
-		Raises TypeError is theta_radians cannot be converted to a float.
+		Raises ValueError is theta_radians cannot be converted to a float.
 		"""
 		self.theta_12 = float(theta)
 		self._updateMatrix()
@@ -204,7 +204,7 @@ class Oscillations:
 	def setTheta23(self, theta):
 		"""Set the PMNS mixing angle theta_23.
 		
-		Raises TypeError is theta cannot be converted to a float.
+		Raises ValueError is theta cannot be converted to a float.
 		"""
 		self.theta_23 = float(theta)
 		self._updateMatrix()
@@ -213,7 +213,7 @@ class Oscillations:
 	def setTheta13(self, theta):
 		"""Set the PMNS mixing angle theta_13.
 		
-		Raises TypeError is theta cannot be converted to a float.
+		Raises ValueError is theta cannot be converted to a float.
 		"""
 		self.theta_13 = float(theta)
 		self._updateMatrix()
@@ -222,7 +222,7 @@ class Oscillations:
 	def setDeltaCP(self, delta):
 		"""Set the PMNS CP-violating phase delta_cp.
 		
-		Raises TypeError is delta cannot be converted to a float.
+		Raises ValueError is delta cannot be converted to a float.
 		"""
 		self.delta_cp = float(delta)
 		self._updateMatrix()

@@ -1,9 +1,11 @@
 import unittest
+import xmlrunner
 import oscillations
 import math
 
 
 float_comp = 7
+xml_output = True
 
 
 
@@ -253,12 +255,16 @@ class TestOscillations (unittest.TestCase):
 
 
 def main():
-	suite = unittest.TestSuite()
-	loader = unittest.TestLoader()
-	for test_class in [TestUnits, TestNeutrinos, TestOscillations]:
-		tests = loader.loadTestsFromTestCase(test_class)
-		suite.addTests(tests)
-	unittest.TextTestRunner(verbosity=2).run(suite)
+	if( xml_output ):
+		import xmlrunner	
+		unittest.main(
+			testRunner=xmlrunner.XMLTestRunner(),
+			failfast=False,
+			buffer=False,
+			catchbreak=False
+			)
+	else:
+		unittest.main()
 	
 if __name__ == "__main__":
 	main()

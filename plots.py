@@ -25,7 +25,7 @@ def style(nu):
 	"""Return the line style to use for a given neutrino flavour."""
 	if oscillations.isNeutrino(nu):
 		return 1
-	elif oscillations.isAntiNeutrino:
+	elif oscillations.isAntiNeutrino(nu):
 		return 7
 	else:
 		raise ValueError("Invalid neutrino/anti-neutrino enum.")

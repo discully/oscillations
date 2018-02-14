@@ -336,15 +336,3 @@ class Oscillations:
 		s += "E   = {:} GeV\n".format(self.E/units.GeV)
 		s += "L/E = {:.2f} km/GeV".format((self.L/units.km) / (self.E/units.GeV))
 		return s
-
-
-
-def main():
-	osc = Oscillations()
-	print osc.p(nu_mu, nu_e)
-	print osc
-
-
-
-if __name__ == "__main__":
-	main()

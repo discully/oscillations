@@ -2,6 +2,14 @@
 
 Calculate neutrino oscillation probabilities easily.
 
+## Installation
+
+You can install oscillations from PyPI in the usual way...
+
+```
+pip install oscillations
+```
+
 ## Example
 
 Here's a basic example of how to use the module:
@@ -15,10 +23,11 @@ osc.setTheta23( 90.0 * oscillations.units.degrees )
 osc.setE( 1.0 * oscillations.units.GeV )
 osc.setL( 3000.0 * oscillations.units.km )
 
-print "P(nu_mu -> nu_e) = ", osc.p(oscillations.nu_mu, oscillations.nu_e)
+p = osc.p(oscillations.nu_mu, oscillations.nu_e)
+print("P(nu_mu -> nu_e) = ", p)
 
-print "Parameters used:"
-print osc
+print("Parameters used:")
+print(osc)
 ```
 
 Remember to always use the oscillations.units constants to convert to the

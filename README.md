@@ -28,7 +28,7 @@ correct units whenever you call the set parameter methods of Oscillations.
 
 There are multiple examples of the use of the module in plots.py, which
 includes the code used to generate all the [oscillations plots in my PhD
-thesis](http://danielscully.co.uk/thesis/neutrinos.html#section-oscillation-measurment).
+thesis](https://danielscully.uk/thesis/neutrinos.html#section-oscillation-measurment).
 
 To run plots.py, you will need to have PyROOT installed and loaded.
 

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name="oscillations",
-	version="1.1.0",
+	version="1.1.1",
 	description="Calculate neutrino oscillation probabilities easily",
 	long_description="Calculate neutrino oscillation probabilities easily",
 	url="https://github.com/discully/oscillations",

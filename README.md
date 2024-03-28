@@ -10,7 +10,7 @@ You can install oscillations from PyPI in the usual way...
 pip install oscillations
 ```
 
-## Example
+## Basic Example
 
 Here's a basic example of how to use the module:
 
@@ -32,6 +32,17 @@ print(osc)
 
 Remember to always use the oscillations.units constants to convert to the
 correct units whenever you call the set parameter methods of Oscillations.
+
+## Preset Parameter Examples
+
+For convenience, there are three functions which return Oscillations objects
+with the parameters set according to values from recent PDG summary tables.
+
+```python
+osc_2013 = oscillations.pdg2013()
+osc_2020 = oscillations.pdg2020()
+osc_2022 = oscillations.pdg2022()
+```
 
 ## More Examples
 

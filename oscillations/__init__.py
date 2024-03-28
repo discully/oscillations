@@ -16,7 +16,7 @@ testing them.
 """
 
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "Daniel I. Scully"
 
 
@@ -56,7 +56,7 @@ class Units:
 		self.cm = 1.0e-02 * self.m
 		# Angle
 		self.radians = 1.0
-		self.degrees = (math.pi/180.0) * self.radians;
+		self.degrees = (math.pi/180.0) * self.radians
 		# For mass-squared differences
 		self.eV2  = pow(self.eV,  2)
 		self.meV2 = pow(self.meV, 2)
@@ -116,7 +116,7 @@ class Oscillations:
 	"""
 
 	def __init__(self):
-		"""Constructs with initial parameters approximate to PDG (2013) and the T2K experiment."""
+		"""Constructs with initial parameters from my thesis and the T2K experiment."""
 		self.L = 295.0 * units.km  # T2K approximate baseline
 		self.E =   0.6 * units.GeV # T2K approximate peak nu_mu energy
 
@@ -340,3 +340,54 @@ class Oscillations:
 		s += "E   = {:} GeV\n".format(self.E/units.GeV)
 		s += "L/E = {:.2f} km/GeV".format((self.L/units.km) / (self.E/units.GeV))
 		return s
+
+
+
+#
+# Preset oscillation parameter sets
+#
+
+
+
+def pdg2013():
+	"""Returns an Oscillations instance with parameters set to the PDG 2013 values."""
+	osc = Oscillations()
+	theta_12 = math.asin(math.sqrt(0.857)) / 2.0
+	osc.setTheta12(theta_12 * units.radians)
+	osc.setDeltaM21(7.50e-5 * units.eV2)
+	osc.setTheta23(45.0 * units.degrees)
+	osc.setDeltaM32(2.32e-3 * units.eV2)
+	theta_13 = math.asin(math.sqrt(0.095)) / 2.0
+	osc.setTheta13(theta_13 * units.radians)
+	osc.setDeltaCP(0.0)
+	return osc
+
+
+def pdg2020():
+	"""Returns an Oscillations instance with parameters set to the PDG 2020 (normal order) values."""
+	osc = Oscillations()
+	theta_12 = math.asin(math.sqrt(0.307))
+	osc.setTheta12(theta_12 * units.radians)
+	osc.setDeltaM21(7.53e-5 * units.eV2)
+	theta_23 = math.asin(math.sqrt(0.545))
+	osc.setTheta23(theta_23 * units.radians)
+	osc.setDeltaM32(2.453e-3 * units.eV2)
+	theta_13 = math.asin(math.sqrt(2.18e-2))
+	osc.setTheta13(theta_13 * units.radians)
+	osc.setDeltaCP(1.36 * math.pi * units.radians)
+	return osc
+
+
+def pdg2022():
+	"""Returns an Oscillations instance with parameters set to the PDG 2022 (normal order) values."""
+	osc = Oscillations()
+	theta_12 = math.asin(math.sqrt(0.307))
+	osc.setTheta12(theta_12 * units.radians)
+	osc.setDeltaM21(7.53e-5 * units.eV2)
+	theta_23 = math.asin(math.sqrt(0.546))
+	osc.setDeltaM32(2.453e-3 * units.eV2)
+	theta_13 = math.asin(math.sqrt(2.20e-2))
+	osc.setTheta13(theta_13 * units.radians)
+	osc.setDeltaCP(1.36 * math.pi * units.radians)
+	return osc
+
